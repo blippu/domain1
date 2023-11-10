@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+  
 jobs:
   trigger_workflow:
       runs-on: ubuntu-latest
