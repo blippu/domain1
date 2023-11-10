@@ -10,9 +10,10 @@ on:
       - main
   
   workflow_dispatch:
+
   
 jobs:
-  trigger_workflow:
+  call_workflow:
     uses: blippu/githubactions/.github/workflows/dev.yml@v0.1
     with:
       config_file: dev/container.txt
