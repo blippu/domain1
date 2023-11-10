@@ -12,9 +12,6 @@ jobs:
       runs-on: ubuntu-latest
       
       steps:
-      - uses: convictional/trigger-workflow-and-wait@v1.6.1
+      - uses: blippu/githubactions/.github/workflows/dev.yml
         with:
-          owner: blippu
-          repo: githubactions
-          workflow_file_name: dev.yml
-          github_token: ${{ secrets.PAT }}
+          config_file: dev/container.txt
