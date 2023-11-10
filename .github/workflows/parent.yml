@@ -11,8 +11,8 @@ jobs:
   trigger_workflow:
       runs-on: ubuntu-latest
       steps:
-        -name: Trrgger child workflow
-        -uses: convictional/trigger-workflow-and-wait
+        -name: "Trigger child workflow"
+         uses: convictional/trigger-workflow-and-wait
          with:
            owner: blippu
            repo: githubactions
