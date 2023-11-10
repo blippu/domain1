@@ -16,4 +16,4 @@ jobs:
   call_workflow:
     uses: blippu/githubactions/.github/workflows/dev.yml@v0.1
     with:
-      config_file: dev/container.txt
+      config_file: ./dev/container.txt
