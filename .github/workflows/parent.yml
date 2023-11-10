@@ -34,4 +34,4 @@ jobs:
         contents: read
     uses: blippu/githubactions/.github/workflows/dev.yml@v0.1
     with:
-      config_file: parent.yml2
+      config_file: dev/container.txt
