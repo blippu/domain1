@@ -1,8 +1,4 @@
 name: "workflow"
-
-permissions:
-      id-token: write
-      contents: read
       
 on:
   push:
@@ -10,10 +6,12 @@ on:
       - main
   
   workflow_dispatch:
-
   
 jobs:
   call_workflow:
+    permissions:
+        id-token: write
+        contents: read
     uses: blippu/githubactions/.github/workflows/dev.yml@v0.1
     with:
       config_file: ./dev/container.txt
