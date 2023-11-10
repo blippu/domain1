@@ -12,8 +12,9 @@ jobs:
       runs-on: ubuntu-latest
       
       steps:
-        -name: "Trigger child workflow"
-        uses: convictional/trigger-workflow-and-wait
-        owner: blippu
-        repo: githubactions
-        workflow_file_name: dev.yml
+      - uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: blippu
+          repo: githubactions
+          workflow_file_name: dev.yml
+          github_token: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
