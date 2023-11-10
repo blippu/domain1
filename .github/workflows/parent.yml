@@ -17,4 +17,4 @@ jobs:
           owner: blippu
           repo: githubactions
           workflow_file_name: dev.yml
-          github_token: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.PAT }}
