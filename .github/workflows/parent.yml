@@ -1,7 +1,7 @@
 name: "DEV Call dande workflow"
       
 on:
-  push:
+  pull request:
     branches:
       - main
   
