@@ -10,9 +10,9 @@ on:
 jobs:
   call_workflow:
     secrets: inherit
-    #permissions:
-    #    id-token: write
-    #    contents: read
+    permissions:
+        id-token: write
+        contents: read
     uses: ./.github/workflows/dev-v2.yml
     with:
       config-file: ./dev/container.txt
