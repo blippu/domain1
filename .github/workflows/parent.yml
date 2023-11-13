@@ -15,4 +15,4 @@ jobs:
         contents: read
     uses: ./.github/workflows/dev-v2.yml
     with:
-      config-file: dev/container.txt
+      config-file: https://github.com/blippu/domain1/blob/36e7b19d993ce4f3827522543255d41fc49cbc23/dev/container.txt
