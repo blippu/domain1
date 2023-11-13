@@ -15,4 +15,4 @@ jobs:
         contents: read
     uses: ./.github/workflows/dev-v2.yml
     with:
-      config-file: ./dev/container.txt
+      config-file: dev/container.txt
