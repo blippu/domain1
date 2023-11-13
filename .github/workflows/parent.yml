@@ -13,6 +13,6 @@ jobs:
     permissions:
         id-token: write
         contents: read
-    uses: blippu/githubactions/.github/workflows/dev-v2.yml
+    uses: blippu/githubactions/.github/workflows/dev-v2.yml@v0.1
     with:
       config-file: ./dev/container.txt
