@@ -1,4 +1,4 @@
-name: "DEV Call dande workflow"
+name: "PRD Call dande workflow"
       
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
         contents: read
     uses: blippu/githubactions/.github/workflows/dev-v2.yml@main
     with:
-      config-file: dev/container.txt
+      config-file: prd/container.txt
