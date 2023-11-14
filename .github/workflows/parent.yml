@@ -6,8 +6,25 @@ on:
 #      - main
   
   workflow_dispatch:
+      decision:
+        description: 'Are you sure you want to deploy to DEV ?'
+        required: true
+        default: 'not really'
+        type: choice
+        options:
+          - not really
+          - yes I am sure
+          - maybe
   
 jobs:
+
+  print-tag:
+    runs-on: ubuntu-latest
+    if:  ${{ inputs.decision }} 
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The decision was ${{ inputs.tags }} 
+
   call_workflow:
     secrets: inherit
     permissions:
