@@ -6,6 +6,7 @@ on:
 #      - main
   
   workflow_dispatch:
+    inputs:
       decision:
         description: 'Are you sure you want to deploy to DEV ?'
         required: true
