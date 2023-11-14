@@ -21,7 +21,7 @@ jobs:
 
 
   call_workflow:
-    if: ${{ inputs.decision }} == "yes I am sure"
+    if: ${{ inputs.decision }} == 'yes I am sure'
     secrets: inherit
     permissions:
         id-token: write
