@@ -33,3 +33,4 @@ jobs:
     uses: blippu/githubactions/.github/workflows/dev-v2.yml@main
     with:
       config-file: dev/container.txt
+      environment: ${{ inputs.decision }}
