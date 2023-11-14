@@ -8,19 +8,12 @@ on:
   workflow_dispatch:
     inputs:
       decision:
-        description: 'Are you sure you want to deploy to DEV ?'
+        description: 'Are you sure you want to deploy to DEV ? please confirm the environment 
         required: true
         default: 'not really'
         type: choice
         options:
           - not really
-          - yes I am sure
-      environment:
-        description: 'Are you sure you want to deploy to DEV ?'
-        required: true
-        default: 'not really'
-        type: choice
-        options:
           - dev
 
 jobs:
@@ -32,7 +25,7 @@ jobs:
         run: echo  The tags are ${{ inputs.decision }} 
 
   call_workflow:
-    if: ${{ inputs.decision }} == 'yes I am sure'
+    if: ${{ inputs.decision }} == 'dev'
     secrets: inherit
     permissions:
         id-token: write
