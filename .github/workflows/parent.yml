@@ -19,7 +19,7 @@ on:
   
 jobs:
 
-  if: ${{ inputs.decision }} == "yes I am sure"
+  #if: ${{ inputs.decision }} == "yes I am sure"
   call_workflow:
     secrets: inherit
     permissions:
