@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       decision:
-        description: 'Are you sure you want to deploy to DEV ? please confirm the environment 
+        description: 'Are you sure you want to deploy to DEV ? please confirm the environment' 
         required: true
         default: 'not really'
         type: choice
