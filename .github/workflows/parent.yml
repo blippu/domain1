@@ -15,7 +15,14 @@ on:
         options:
           - not really
           - yes I am sure
-  
+      environment:
+        description: 'Are you sure you want to deploy to DEV ?'
+        required: true
+        default: 'not really'
+        type: choice
+        options:
+          - dev
+
 jobs:
   print-tag:
     runs-on: ubuntu-latest
