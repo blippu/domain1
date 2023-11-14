@@ -19,13 +19,7 @@ on:
   
 jobs:
 
-  print-tag:
-    runs-on: ubuntu-latest
-    if:  ${{ inputs.decision }} 
-    steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The decision was ${{ inputs.tags }} 
-
+  if: ${{ inputs.decision }} == "yes I am sure"
   call_workflow:
     secrets: inherit
     permissions:
