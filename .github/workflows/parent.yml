@@ -15,10 +15,14 @@ on:
         options:
           - not really
           - yes I am sure
-          - maybe
   
 jobs:
-
+  print-tag:
+    runs-on: ubuntu-latest
+    if:  ${{ inputs.decision }} 
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.decision }} 
 
   call_workflow:
     if: ${{ inputs.decision }} == 'yes I am sure'
