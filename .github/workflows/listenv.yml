@@ -10,6 +10,10 @@ on:
 jobs:
   print-tag:
     runs-on: ubuntu-latest
+    environment:
+      name: dev
     steps:
+      - name: Print the environment variables
+        run: echo ${{ secrets.AZURE_CLIENT_ID  }}
       - name: Print the environment variables
         run: env
