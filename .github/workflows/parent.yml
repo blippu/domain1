@@ -25,7 +25,7 @@ jobs:
         run: echo  The tags are ${{ inputs.decision }} 
 
   call_workflow:
-    if: ${{ inputs.decision }} == 'dev'
+    if: ${{ inputs.decision  == 'dev' }}
     secrets: inherit
     permissions:
         id-token: write
