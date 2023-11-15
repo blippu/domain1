@@ -6,9 +6,26 @@ on:
 #      - main
   
   workflow_dispatch:
-  
+    inputs:
+      decision:
+        description: 'Do you want to deploy to TST ? Please confirm the environment' 
+        required: true
+        default: 'which environment ?'
+        type: choice
+        options:
+          - which environment ?
+          - tst
+
 jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+    if:  ${{ inputs.decision }} 
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.decision }} 
+
   call_workflow:
+    if: ${{ inputs.decision  == 'tst' }}
     secrets: inherit
     permissions:
         id-token: write
@@ -16,4 +33,4 @@ jobs:
     uses: blippu/githubactions/.github/workflows/dev-v2.yml@main
     with:
       config-file: tst/container.txt
-      environment: tst
+      environment: ${{ inputs.decision }}
