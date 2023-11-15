@@ -16,3 +16,4 @@ jobs:
     uses: blippu/githubactions/.github/workflows/dev-v2.yml@main
     with:
       config-file: tst/container.txt
+      environment: tst
