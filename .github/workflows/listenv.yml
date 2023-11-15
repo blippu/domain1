@@ -14,6 +14,6 @@ jobs:
       name: dev
     steps:
       - name: Print the environment variables
-        run: echo ${{ secrets.AZURE_CLIENT_ID  }}
+        run: echo ${{ secrets.tenant  }}
       - name: Print the environment variables
         run: env
