@@ -32,7 +32,7 @@ jobs:
         run: echo  The tags are ${{ inputs.decision }} 
 
   call_workflow_storage_account_level:
-    if: ${{ inputs.decision  == 'dev' && inputs.granularity  == 'storage account'}}
+    if: ${{ inputs.decision  == 'dev'}}
     secrets: inherit
     permissions:
         id-token: write
@@ -41,14 +41,4 @@ jobs:
     with:
       config-file: dev/container.txt
       environment: ${{ inputs.decision }}
-
-  call_workflow_container_level:
-    if: ${{ inputs.decision  == 'dev' && inputs.granularity  == 'container'}}
-    secrets: inherit
-    permissions:
-        id-token: write
-        contents: read
-    uses: blippu/githubactions/.github/workflows/dev-v2.yml@main
-    with:
-      config-file: dev/container.txt
-      environment: ${{ inputs.decision }}
+      granularity: ${{ inputs.granularity }}
