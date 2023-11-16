@@ -33,7 +33,7 @@ jobs:
 
   call_workflow_storage_account_level:
     if: ${{ inputs.decision  == 'dev'}}
-    secrets: inherit
+    #secrets: inherit
     permissions:
         id-token: write
         contents: read
