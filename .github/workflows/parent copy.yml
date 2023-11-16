@@ -15,6 +15,15 @@ on:
         options:
           - which environment ?
           - tst
+      
+      granularity:
+        description: 'deploy security groups at storage account or container level?' 
+        required: true
+        default: 'storage account'
+        type: choice
+        options:
+          - storage account
+          - container
 
 jobs:
   print-tag:
