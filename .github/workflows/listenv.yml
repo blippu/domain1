@@ -16,4 +16,4 @@ jobs:
     permissions:
         id-token: write
         contents: read
-    uses: blippu/githubactions/.github/workflows/dev-v2.yml@feature/DDM-1012
+    uses: blippu/githubactions/.github/workflows/listenv.yml@feature/DDM-1012
