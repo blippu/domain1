@@ -27,8 +27,8 @@ jobs:
   print-tag:
     runs-on: ubuntu-latest
     permissions:
-    id-token: write
-    contents: read
+      id-token: write
+      contents: read
     secrets: inherit
     if:  ${{ inputs.decision }} 
     steps:
