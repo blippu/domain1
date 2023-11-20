@@ -29,7 +29,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    secrets: inherit
+
     if:  ${{ inputs.decision }} 
     steps:
       - name: Print the input tag to STDOUT
