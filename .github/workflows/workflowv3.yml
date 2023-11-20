@@ -54,7 +54,7 @@ jobs:
         id: package
         uses: jaywcjlove/github-action-read-file@main
         with:
-          path: ${{ inputs.config-file }}
+          path: dev/container.txt
       
 
       - name: Create container inside storage account
