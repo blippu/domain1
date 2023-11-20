@@ -31,6 +31,8 @@ jobs:
       contents: read
 
     if:  ${{ inputs.decision }} 
+    environment:
+      name: ${{ inputs.decision }}
     steps:
       - name: Print the input tag to STDOUT
         run: echo  The tags are ${{ inputs.decision }} 
