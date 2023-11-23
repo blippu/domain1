@@ -37,13 +37,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout local repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          path: mydomain
       
       - name: Checkout DAnDE repo
         uses: actions/checkout@v4
         with:
           repository: blippu/githubactions
           ref: main
+          path: dande
 
       # Login via Fed id service principal linked to my repo and my environment
       - name: 'Az CLI login'
@@ -57,10 +60,13 @@ jobs:
         id: package
         uses: jaywcjlove/github-action-read-file@main
         with:
-          path: ./dev/container.txt
-
+          path: ./mydomain/dev/container.txt
+      - name: Run script
+        run: |
+          ls -al ./mydomain
+          cat ./mydomain/dev/container.txt
 
       - name: Run script
         run: |
-          ls -al ./dev
-          cat ./dev/container.txt
+          ls -al ./dande
+          cat ./dande/dev/container.txt
