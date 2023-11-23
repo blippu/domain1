@@ -57,7 +57,7 @@ jobs:
         id: package
         uses: jaywcjlove/github-action-read-file@main
         with:
-          path: dev\container.txt
+          path: ./dev/container.txt
 
 
       - name: Run script
