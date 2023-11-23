@@ -58,3 +58,8 @@ jobs:
         uses: jaywcjlove/github-action-read-file@main
         with:
           path: dev\container.txt
+
+
+      - name: Run script
+        run: |
+          ls -al
