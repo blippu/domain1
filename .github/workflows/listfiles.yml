@@ -44,6 +44,7 @@ jobs:
         with:
           repository: blippu/githubactions
           ref: main
+          path: main
 
       # Login via Fed id service principal linked to my repo and my environment
       - name: 'Az CLI login'
