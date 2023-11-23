@@ -10,11 +10,11 @@ on:
       environment:
         description: 'Do you want to deploy to DEV ? Please confirm the environment' 
         required: true
-        default: 'eu-dev'
+        default: 'dev'
         type: choice
         options:
           - which environment ?
-          - eu-dev
+          - dev
       granularity:
         description: 'deploy security groups at storage account or container level?' 
         required: true
