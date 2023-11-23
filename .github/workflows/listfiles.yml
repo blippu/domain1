@@ -10,7 +10,7 @@ on:
       environment:
         description: 'Do you want to deploy to DEV ? Please confirm the environment' 
         required: true
-        default: 'which environment ?'
+        default: 'eu-dev'
         type: choice
         options:
           - which environment ?
@@ -32,7 +32,8 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    
+    environment:
+      name: ${{ inputs.environment }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout local repo
