@@ -63,3 +63,4 @@ jobs:
       - name: Run script
         run: |
           ls -al ./dev
+          echo ./dev/container.txt
