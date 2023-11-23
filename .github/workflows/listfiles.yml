@@ -36,15 +36,14 @@ jobs:
       name: ${{ inputs.environment }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout local repo
-        uses: actions/checkout@v4
+      #- name: Checkout local repo
+      #  uses: actions/checkout@v4
       
       - name: Checkout DAnDE repo
         uses: actions/checkout@v4
         with:
           repository: blippu/githubactions
           ref: main
-          path: dev
 
       # Login via Fed id service principal linked to my repo and my environment
       - name: 'Az CLI login'
