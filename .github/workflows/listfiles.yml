@@ -62,4 +62,4 @@ jobs:
 
       - name: Run script
         run: |
-          ls -al
+          ls -al ./dev
