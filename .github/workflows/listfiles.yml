@@ -36,8 +36,8 @@ jobs:
       name: ${{ inputs.environment }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- name: Checkout local repo
-      #  uses: actions/checkout@v4
+      - name: Checkout local repo
+        uses: actions/checkout@v3
       
       - name: Checkout DAnDE repo
         uses: actions/checkout@v4
