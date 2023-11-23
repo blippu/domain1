@@ -39,11 +39,11 @@ jobs:
       - name: Checkout local repo
         uses: actions/checkout@v3
       
-      - name: Checkout DAnDE repo
-        uses: actions/checkout@v4
-        with:
-          repository: blippu/githubactions
-          ref: main
+      #- name: Checkout DAnDE repo
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: blippu/githubactions
+      #    ref: main
 
       # Login via Fed id service principal linked to my repo and my environment
       - name: 'Az CLI login'
