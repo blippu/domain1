@@ -41,7 +41,7 @@ jobs:
       - name: Checkout DAnDE repo
         uses: actions/checkout@v4
         with:
-          repository: blippy/githubactions
+          repository: blippu/githubactions
           ref: main
 
       # Login via Fed id service principal linked to my repo and my environment
