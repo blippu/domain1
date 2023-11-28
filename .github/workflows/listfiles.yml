@@ -10,11 +10,11 @@ on:
       environment:
         description: 'Do you want to deploy to DEV ? Please confirm the environment' 
         required: true
-        default: 'which environment ?'
+        default: 'dev'
         type: choice
         options:
           - which environment ?
-          - eu-dev
+          - dev
       granularity:
         description: 'deploy security groups at storage account or container level?' 
         required: true
@@ -32,16 +32,21 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    
+    environment:
+      name: ${{ inputs.environment }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout local repo
         uses: actions/checkout@v4
+        with:
+          path: mydomain
       
       - name: Checkout DAnDE repo
         uses: actions/checkout@v4
         with:
-          repository: blippy/githubactions
+          repository: blippu/githubactions
+          ref: main
+          path: dande
 
       # Login via Fed id service principal linked to my repo and my environment
       - name: 'Az CLI login'
@@ -55,4 +60,13 @@ jobs:
         id: package
         uses: jaywcjlove/github-action-read-file@main
         with:
-          path: dev/container.txt
+          path: ./mydomain/dev/container.txt
+      - name: Run script
+        run: |
+          ls -al ./mydomain
+          cat ./mydomain/dev/container.txt
+
+      - name: Run script
+        run: |
+          ls -al ./dande
+          cat ./dande/dev/container.txt
