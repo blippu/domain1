@@ -1,9 +1,6 @@
 name: "delete container"
       
 on:
-#  push:
-#    branches:
-#      - main
   
   workflow_dispatch:
     inputs:
@@ -15,18 +12,9 @@ on:
         options:
           - which environment ?
           - dev
-      storageaccount:
-        description: 'name of the storage account?' 
-        required: true
-        default: 'list your storage account here'
-
-      container:
-        description: 'name of the container?' 
-        required: true
-        default: 'list your container here'
 
 jobs:
-  print-tag:
+  delete-container:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -36,9 +24,7 @@ jobs:
     environment:
       name: ${{ inputs.decision }}
     steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.decision }} 
-      
+     
       - uses: actions/checkout@v4
       
       # Login via Fed id service principal linked to my repo and my environment
@@ -52,4 +38,5 @@ jobs:
       - name: Delete container inside storage account
         shell: pwsh
         run: |
-          az storage container delete --auth-mode login --account-name ${{ inputs.storageaccount }}  --name ${{ inputs.container }} 
+          az storage container delete --auth-mode login --account-name underwritingweu --name test
+          az storage container delete --auth-mode login --account-name underwritingweu --name test2
