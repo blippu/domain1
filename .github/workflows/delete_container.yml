@@ -52,4 +52,4 @@ jobs:
       - name: Delete container inside storage account
         shell: pwsh
         run: |
-          az storage container delete --auth-login --account-name ${{ inputs.storageaccount }}  --name ${{ inputs.container }} 
+          az storage container delete --auth-mode login --account-name ${{ inputs.storageaccount }}  --name ${{ inputs.container }} 
