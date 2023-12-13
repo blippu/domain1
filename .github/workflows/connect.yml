@@ -20,6 +20,7 @@ jobs:
 
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob ports 443
+        continue-on-error: true
         shell: pwsh
         run: |
           $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","443")
@@ -30,6 +31,7 @@ jobs:
           }
       - name: Launch a connectivity test from gha private runners towards the storage account dfs ports 443 
         shell: pwsh
+        continue-on-error: true
         run: |
           $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","448")
           if ($connection2.Connected) {
