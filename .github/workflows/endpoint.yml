@@ -10,7 +10,7 @@ on:
       endpointurl:
         description: 'Enter the endpoint fqdn:' 
         required: true
-        default: 'fqdn'
+        default: 'blob17.blob.core.windows.net'
         type: string
       endpointport:
         description: 'Port:' 
@@ -37,5 +37,5 @@ jobs:
           }
 
       - name: Check on failures
-        if: (${{ steps.test1.outcome }} == 'failure' )
+        if: ${{ failure() }}
         run: exit 1
