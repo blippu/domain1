@@ -29,7 +29,7 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-        if: ${{ failure() ||  success() }}
+        #if: ${{ failure() ||  success() }}
       - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
         id: test2
         shell: pwsh
