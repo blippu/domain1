@@ -11,8 +11,10 @@ on:
         description: 'Enter the storage account name' 
         required: true
         default: 'blob17'
-        type: string
-
+        type: choice
+        options:
+          - blob17
+          - tst
 
 jobs:
   test-tcp-connection:
