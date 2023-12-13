@@ -35,7 +35,10 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
 
       - name: Check on failures
-        if: job.steps.test1.outcome != 'success' 
+        if: job.steps.test1.status != 'success' 
         run: exit 1
