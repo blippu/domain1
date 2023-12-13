@@ -11,10 +11,8 @@ on:
         description: 'Enter the storage account name' 
         required: true
         default: 'blob17'
-        type: choice
-        options:
-          - blob17
-          - tst
+        type: string
+
 
 jobs:
   test-tcp-connection:
@@ -24,5 +22,5 @@ jobs:
       - name: Launch a connectivity test from gha private runners towards the storage account ports 443
         shell: pwsh
         run: |
-          Test-NetConnection -ComputerName ${{ inputs.storage }}.blob.core.windows.net -Port 443
-          Test-NetConnection -ComputerName ${{ inputs.storage }}.dfs.core.windows.net -Port 443
+          tnc ${{ inputs.storage }}.blob.core.windows.net -Port 443
+          tnc ${{ inputs.storage }}.dfs.core.windows.net -Port 443
