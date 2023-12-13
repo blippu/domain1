@@ -1,0 +1,66 @@
+name: "workflow 3 "
+      
+on:
+#  push:
+#    branches:
+#      - main
+  
+  workflow_dispatch:
+    inputs:
+      decision:
+        description: 'Do you want to deploy to DEV ? Please confirm the environment' 
+        required: true
+        default: 'which environment ?'
+        type: choice
+        options:
+          - which environment ?
+          - dev
+      granularity:
+        description: 'deploy security groups at storage account or container level?' 
+        required: true
+        default: 'storage account'
+        type: choice
+        options:
+          - storage account
+          - container
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    if:  ${{ inputs.decision }} 
+    environment:
+      name: ${{ inputs.decision }}
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.decision }} 
+      
+      - uses: actions/checkout@v4
+        with:
+          repository: blippu/githubactions
+          ref: main
+      
+      # Login via Fed id service principal linked to my repo and my environment
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Read container.txt
+        id: package
+        uses: jaywcjlove/github-action-read-file@main
+        with:
+          path: dev/container.txt
+      
+
+      - name: Create container inside storage account
+        shell: pwsh
+        run: |
+          dev/build.ps1 ${{ steps.package.outputs.content }}
+
+
+

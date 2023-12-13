@@ -1,5 +1,5 @@
-name: "List env"
-      
+name: "CAll List env"
+            
 on:
 #  push:
 #    branches:
@@ -8,12 +8,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  print-tag:
-    runs-on: ubuntu-latest
-    environment:
-      name: dev
-    steps:
-      - name: Print the environment variables
-        run: echo ${{ vars.tenant  }}
-      - name: Print the environment variables
-        run: env
+
+
+  call_workflow_storage_account_level:
+
+
+    permissions:
+        id-token: write
+        contents: read
+    uses: blippu/githubactions/.github/workflows/listenv.yml@feature/DDM-1012
