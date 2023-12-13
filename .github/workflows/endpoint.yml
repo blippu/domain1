@@ -35,7 +35,8 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-
+        if: ${{ failure() ||  success() }}
+        
       - name: Check on failures
-        if: ${{ failure() }}
+        if: steps.hello.outputs.exit_status
         run: exit 1
