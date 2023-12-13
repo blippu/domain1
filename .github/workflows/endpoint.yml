@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
         id: test1
-        continue-on-error: true
+        if: ${{ failure() ||  success() }}
         shell: pwsh
         run: |
           $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.endpointurl }}","${{ inputs.endpointport }}")
@@ -35,5 +35,5 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-        if: ${{ failure() ||  success() }}
+
 
