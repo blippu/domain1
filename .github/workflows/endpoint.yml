@@ -1,4 +1,4 @@
-name: "endpoint connectivity test"
+name: "Private endpoint connectivity test"
       
 on:
 #  push:
