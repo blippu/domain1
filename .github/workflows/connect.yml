@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Launch a connectivity test from gha private runners towards the storage account blob ports 443
+      - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
         continue-on-error: true
         shell: pwsh
         run: |
@@ -29,7 +29,7 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-      - name: Launch a connectivity test from gha private runners towards the storage account dfs ports 443 
+      - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
         shell: pwsh
         continue-on-error: true
         run: |
