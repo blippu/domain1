@@ -7,7 +7,7 @@ on:
   
   workflow_dispatch:
     inputs:
-      decision:
+      storage:
         description: 'Enter the storage account name' 
         required: true
         default: 'blob17'
