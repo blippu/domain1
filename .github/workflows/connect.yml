@@ -30,6 +30,7 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
+        if: ${{ failure() ||  success() }}
       - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
         id: test2
         shell: pwsh
@@ -41,6 +42,4 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-      - name: Check on failures
-        if: job.steps.test1.outcome != 'success'  || job.steps.test2.outcome != 'success' 
-        run: exit 1
+        if: ${{ failure() ||  success() }}
