@@ -42,5 +42,5 @@ jobs:
             Write-Host "Failed" 
           }
       - name: Check on failures
-        if: job.steps.test1.status == failure() || job.steps.test2.status == failure()
+        if: job.steps.test1.outcome != 'success'  || job.steps.test2.outcome != 'success' 
         run: exit 1
