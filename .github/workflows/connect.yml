@@ -19,6 +19,8 @@ on:
 jobs:
   test-tcp-connection:
     runs-on: ubuntu-latest
+
+    steps:
       - name: Launch a connectivity test from gha private runners towards the storage account ports 443
         shell: pwsh
         run: |
