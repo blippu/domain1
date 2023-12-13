@@ -32,6 +32,7 @@ jobs:
         #if: ${{ failure() ||  success() }}
       - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
         id: test2
+        if: ${{ failure() ||  success() }}
         shell: pwsh
         run: |
           $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","443")
@@ -40,4 +41,4 @@ jobs:
           } else { 
             Write-Host "Failed" 
           }
-        if: ${{ failure() ||  success() }}
+
