@@ -37,5 +37,5 @@ jobs:
           }
 
       - name: Check on failures
-        if: (${{ success() }} || ${{ failure() }}) && (${{ steps.test1.outcome }} == 'failure' )
+        if: (${{ steps.test1.outcome }} == 'failure' )
         run: exit 1
