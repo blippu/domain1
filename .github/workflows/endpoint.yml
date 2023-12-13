@@ -36,7 +36,6 @@ jobs:
             Write-Host "Failed" 
           }
       - name: Dump steps context
-        env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
 
       - name: Check on failures
