@@ -8,11 +8,12 @@ on:
   workflow_dispatch:
     inputs:
       endpointurl:
-        description: 'Enter the endpoint fqdn and port' 
+        description: 'Enter the endpoint fqdn:' 
         required: true
         default: 'fqdn'
         type: string
       endpointport:
+        description: 'Port:' 
         required: true
         default: '443'
         type: string
