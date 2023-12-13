@@ -22,5 +22,11 @@ jobs:
       - name: Launch a connectivity test from gha private runners towards the storage account ports 443
         shell: pwsh
         run: |
-          tnc ${{ inputs.storage }}.blob.core.windows.net -Port 443
-          tnc ${{ inputs.storage }}.dfs.core.windows.net -Port 443
+          $connection = New-Object System.Net.Sockets.TcpClient(${{ inputs.storage }}.blob.core.windows.net, 433)
+          if ($connection.Connected) {
+            Write-Host "Success" 
+          } else { 
+            Write-Host "Failed" 
+          }
+          Test-NetConnection -ComputerName  ${{ inputs.storage }}.blob.core.windows.net -Port 443
+          Test-NetConnection -ComputerName  ${{ inputs.storage }}.dfs.core.windows.net -Port 443
