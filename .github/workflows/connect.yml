@@ -34,9 +34,10 @@ on:
 
 jobs:
   test-public-endpoint:
-    runs-on: ubuntu-latest
+
 
     if: ${{ inputs.pe  == false }}
+    runs-on: ubuntu-latest
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob port 
         id: test1
@@ -62,7 +63,7 @@ jobs:
           }
 
   test-private-endpoint:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, X64, Linux, azure]
 
     if: ${{ inputs.pe  == true }}
     steps:
