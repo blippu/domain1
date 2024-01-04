@@ -63,6 +63,7 @@ jobs:
         shell: pwsh
         run: |
           $env:no_proxy = $env:no_proxy + '.local,localhost,127.0.0.1,' + 'dfs.core.windows.net,blob.core.windows.net'
+          New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","${{ inputs.port }}")
           $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","${{ inputs.port }}")
           if ($connection.Connected) {
             Write-Host "Success" 
@@ -76,6 +77,7 @@ jobs:
         shell: pwsh
         run: |
           $env:no_proxy = $env:no_proxy + '.local,localhost,127.0.0.1,' + 'dfs.core.windows.net,blob.core.windows.net'
+          New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","${{ inputs.port }}")
           $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","${{ inputs.port }}")
           if ($connection2.Connected) {
             Write-Host "Success" 
