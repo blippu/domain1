@@ -12,6 +12,11 @@ on:
         required: true
         default: 'blob17'
         type: string
+      pe:
+        description: 'Is this a private endpoint' 
+        required: true
+        default: true
+        type: boolean
 
 
 jobs:
