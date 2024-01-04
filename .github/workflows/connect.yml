@@ -20,9 +20,10 @@ on:
 
 
 jobs:
-  test-tcp-connection:
+  test-public-endpoint:
     runs-on: ubuntu-latest
 
+    if: ${{ inputs.pe  == false }}
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
         id: test1
@@ -47,3 +48,30 @@ jobs:
             Write-Host "Failed" 
           }
 
+  test-private-endpoint:
+    runs-on: ubuntu-latest
+
+    if: ${{ inputs.pe  == true }}
+    steps:
+      - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
+        id: test1
+        shell: pwsh
+        run: |
+          $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","443")
+          if ($connection.Connected) {
+            Write-Host "Success" 
+          } else { 
+            Write-Host "Failed" 
+          }
+        #if: ${{ failure() ||  success() }}
+      - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
+        id: test2
+        if: ${{ failure() ||  success() }}
+        shell: pwsh
+        run: |
+          $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","443")
+          if ($connection2.Connected) {
+            Write-Host "Success" 
+          } else { 
+            Write-Host "Failed" 
+          }
