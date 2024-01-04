@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       storage:
-        description: 'Enter the stroage account name, no FQDN' 
+        description: 'Enter the storage account name, no FQDN' 
         required: true
-        default: 'blob17'
+        default: 'dlsdev'
         type: string
       port:
         description: 'Enter the port number' 
