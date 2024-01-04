@@ -36,7 +36,7 @@ jobs:
   test-public-endpoint:
 
 
-    if: ${{ inputs.pe  == false }}
+    if: ${{ inputs.pe  == false && inputs.env != 'prd' }}
     runs-on: ubuntu-latest
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob port 
@@ -63,9 +63,9 @@ jobs:
           }
 
   test-private-endpoint:
-    runs-on: [self-hosted, X64, Linux, azure]
+    runs-on: ubuntu-latest
 
-    if: ${{ inputs.pe  == true }}
+    if: ${{ inputs.pe  == true && inputs.env != 'prd' }}
     steps:
       - name: Launch a connectivity test from gha private runners towards the storage account blob port 
         id: test1
