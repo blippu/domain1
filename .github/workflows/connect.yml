@@ -22,6 +22,14 @@ on:
         required: true
         default: true
         type: boolean
+      env:  
+        type: choice
+        default: 'dev'
+        options:
+          - dev
+          - tst
+          - prd
+
 
 
 jobs:
