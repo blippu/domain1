@@ -10,7 +10,7 @@ on:
       storage:
         description: 'Enter the storage account name, no FQDN' 
         required: true
-        default: 'dlsdev'
+        default: 'dlsbzprdweu1dom1subdom1'
         type: string
       port:
         description: 'Enter the port number' 
