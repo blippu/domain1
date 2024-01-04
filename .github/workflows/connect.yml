@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       storage:
-        description: 'Enter the endpoint short name, no FQDN' 
+        description: 'Enter the stroage account name, no FQDN' 
         required: true
         default: 'blob17'
         type: string
