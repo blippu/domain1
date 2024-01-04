@@ -8,10 +8,15 @@ on:
   workflow_dispatch:
     inputs:
       storage:
-        description: 'Enter the storage account name' 
+        description: 'Enter the endpoint short name, no FQDN' 
         required: true
         default: 'blob17'
         type: string
+      port:
+        description: 'Enter the port number' 
+        required: true
+        default: '443'
+        type: string        
       pe:
         description: 'Is this a private endpoint ?' 
         required: true
@@ -25,23 +30,23 @@ jobs:
 
     if: ${{ inputs.pe  == false }}
     steps:
-      - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
+      - name: Launch a connectivity test from gha private runners towards the storage account blob port 
         id: test1
         shell: pwsh
         run: |
-          $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","443")
+          $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","${{ inputs.port }}")
           if ($connection.Connected) {
             Write-Host "Success" 
           } else { 
             Write-Host "Failed" 
           }
         #if: ${{ failure() ||  success() }}
-      - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
+      - name: Launch a connectivity test from gha private runners towards the storage account dfs port  
         id: test2
         if: ${{ failure() ||  success() }}
         shell: pwsh
         run: |
-          $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","443")
+          $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","${{ inputs.port }}")
           if ($connection2.Connected) {
             Write-Host "Success" 
           } else { 
@@ -53,25 +58,25 @@ jobs:
 
     if: ${{ inputs.pe  == true }}
     steps:
-      - name: Launch a connectivity test from gha private runners towards the storage account blob port 443
+      - name: Launch a connectivity test from gha private runners towards the storage account blob port 
         id: test1
         shell: pwsh
         run: |
           $env:no_proxy = $env:no_proxy + '.local,localhost,127.0.0.1,' + 'dfs.core.windows.net,blob.core.windows.net'
-          $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","443")
+          $connection = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.blob.core.windows.net","${{ inputs.port }}")
           if ($connection.Connected) {
             Write-Host "Success" 
           } else { 
             Write-Host "Failed" 
           }
         #if: ${{ failure() ||  success() }}
-      - name: Launch a connectivity test from gha private runners towards the storage account dfs port 443 
+      - name: Launch a connectivity test from gha private runners towards the storage account dfs port  
         id: test2
         if: ${{ failure() ||  success() }}
         shell: pwsh
         run: |
           $env:no_proxy = $env:no_proxy + '.local,localhost,127.0.0.1,' + 'dfs.core.windows.net,blob.core.windows.net'
-          $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","443")
+          $connection2 = New-Object System.Net.Sockets.TcpClient("${{ inputs.storage }}.dfs.core.windows.net","${{ inputs.port }}")
           if ($connection2.Connected) {
             Write-Host "Success" 
           } else { 
